@@ -29,8 +29,8 @@
          with/2]).
 
 %% @doc Adds a pool to the started mysql_poolboy application.
+%% We want strategy fifo as default instead of lifo.
 add_pool(PoolName, PoolArgs, MysqlArgs) ->
-    %% We want strategy fifo as default instead of lifo.
     PoolSpec = child_spec(PoolName, PoolArgs, MysqlArgs),
     supervisor:start_child(mysql_poolboy_sup, PoolSpec).
 
